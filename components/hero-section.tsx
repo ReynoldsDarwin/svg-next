@@ -13,8 +13,8 @@ export function HeroSection() {
 
       <div className="container mx-auto text-center relative z-10 pb-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 text-balance">
-            Jab sb aapki le rahe ho to <span className="text-gray-300">aap bhi khuch lelo</span>
+          <h2 className="text-2xl md:text-3xl font-bold text-white/70 mb-6 text-balance">
+            Donde la visión se convierte en software excepcional
           </h2>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">

@@ -4,9 +4,9 @@ import "./globals.css"
 import ClientLayout from "./ClientLayout"
 
 export const metadata: Metadata = {
-  title: "LeLo - Modern SaaS Solution",
-  description: "Jab sb aapki le rahe ho to aap bhi khuch lelo",
-  generator: "v0.app",
+  title: "Darwin Reynolds - ADSA",
+  description: "Donde la visión se convierte en software excepcional",
+  generator: "Next.js - Darwin Reynolds",
 }
 
 export default function RootLayout({

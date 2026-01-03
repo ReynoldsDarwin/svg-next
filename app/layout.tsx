@@ -5,7 +5,7 @@ import ClientLayout from "./ClientLayout"
 
 export const metadata: Metadata = {
   title: "Darwin Reynolds - ADSA",
-  description: "Donde la visión se convierte en software excepcional",
+  description: "Diseño e implementación de sistemas de software con enfoque en calidad, rendimiento y escalabilidad",
   generator: "Next.js - Darwin Reynolds",
 }
 

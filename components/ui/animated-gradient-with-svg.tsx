@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useMemo, useRef } from "react"
+import { useMemo, useRef, useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { useDimensions } from "@/components/hooks/use-debounced-dimensions"
 
@@ -11,6 +11,22 @@ interface AnimatedGradientProps {
   blur?: "light" | "medium" | "heavy"
 }
 
+// Definimos el tipo para los valores aleatorios para evitar errores de TypeScript
+interface RandomValues {
+  top: number
+  left: number
+  tx1: number
+  ty1: number
+  tx2: number
+  ty2: number
+  tx3: number
+  ty3: number
+  tx4: number
+  ty4: number
+  widthMultiplier: number
+  heightMultiplier: number
+}
+
 const randomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
@@ -18,9 +34,13 @@ const randomInt = (min: number, max: number) => {
 const AnimatedGradient: React.FC<AnimatedGradientProps> = ({ colors, speed = 5, blur = "light" }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const dimensions = useDimensions(containerRef)
+  
+  // CAMBIO 1: Usamos useState para guardar los valores
+  const [randomValues, setRandomValues] = useState<RandomValues[]>([])
 
-  const randomValues = useMemo(() => {
-    return colors.map(() => ({
+  // CAMBIO 2: Usamos useEffect para generar los números SOLO en el cliente
+  useEffect(() => {
+    const newValues = colors.map(() => ({
       top: Math.random() * 50,
       left: Math.random() * 50,
       tx1: Math.random() - 0.5,
@@ -34,7 +54,8 @@ const AnimatedGradient: React.FC<AnimatedGradientProps> = ({ colors, speed = 5, 
       widthMultiplier: randomInt(0.5, 1.5),
       heightMultiplier: randomInt(0.5, 1.5),
     }))
-  }, [colors.length])
+    setRandomValues(newValues)
+  }, [colors]) // Se regenera si cambian los colores
 
   const circleSize = useMemo(() => {
     if (dimensions.width === 0 && dimensions.height === 0) {
@@ -49,6 +70,7 @@ const AnimatedGradient: React.FC<AnimatedGradientProps> = ({ colors, speed = 5, 
     <div ref={containerRef} className="absolute inset-0 overflow-hidden">
       <div className={cn(`absolute inset-0`, blurClass)}>
         {colors.map((color, index) => {
+          // Si aún no hay valores (renderizado del servidor), no mostramos nada para evitar el error
           const randomValue = randomValues[index]
           if (!randomValue) return null
 

@@ -90,7 +90,7 @@ export function Header() {
             size="sm"
             className="bg-primary hover:bg-primary/90 text-primary-foreground transform transition-all duration-200 hover:scale-105 hover:shadow-lg rounded-xl"
           >
-            Get Started
+            Contactanos
           </Button>
         </div>
       </div>

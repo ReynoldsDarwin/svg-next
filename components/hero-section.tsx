@@ -37,20 +37,20 @@ export function HeroSection() {
                   <InfiniteSlider durationOnHover={20} duration={40} gap={112}>
                     <div className="flex">
                       <img
-                        className="mx-auto h-5 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/nvidia-TAN2JNiFDeluYk9hlkv4qXwWtfx5Cy.svg"
-                        alt="Nvidia Logo"
-                        height="20"
+                        className="mx-auto h-8 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/503536/react.svg"
+                        alt="React Logo"
+                        height="32"
                         width="auto"
                       />
                     </div>
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-4 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/column-qYeLfzzj1ni9E7PhooLL6Mzip5Zeb4.svg"
-                        alt="Column Logo"
-                        height="16"
+                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/512738/python-127.svg"
+                        alt="python Logo"
+                        height="28"
                         width="auto"
                       />
                     </div>
@@ -65,19 +65,19 @@ export function HeroSection() {
                     </div>
                     <div className="flex">
                       <img
-                        className="mx-auto h-5 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/nike-H0OCso4JdUtllUTdAverMAjJmcKVXU.svg"
-                        alt="Nike Logo"
-                        height="20"
+                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/369594/tailwind.svg"
+                        alt="Tailwind CSS Logo"
+                        height="28"
                         width="auto"
                       />
                     </div>
                     <div className="flex">
                       <img
-                        className="mx-auto h-5 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/lemonsqueezy-ZL7mmIzqR10hWcodoO19ajha8AS9VK.svg"
-                        alt="Lemon Squeezy Logo"
-                        height="20"
+                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/508795/css3-02.svg"
+                        alt="CSS3 Logo"
+                        height="28"
                         width="auto"
                       />
                     </div>

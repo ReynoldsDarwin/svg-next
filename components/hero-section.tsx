@@ -74,6 +74,27 @@ export function HeroSection() {
                         width="auto"
                       />
                     </div>
+
+                    <div className="flex">
+                      <img
+                        className="mx-auto h-8 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/512355/html-124.svg"
+                        alt="HTML5 Logo"
+                        height="32"
+                        width="auto"
+                      />
+                    </div>
+
+                    <div className="flex">
+                      <img
+                        className="mx-auto h-8 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/508795/css3-02.svg"
+                        alt="CSS3 Logo"
+                        height="32"
+                        width="auto"
+                      />
+                    </div>
+
                     <div className="flex">
                       <img
                         className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
@@ -83,15 +104,7 @@ export function HeroSection() {
                         width="auto"
                       />
                     </div>
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/508795/css3-02.svg"
-                        alt="CSS3 Logo"
-                        height="28"
-                        width="auto"
-                      />
-                    </div>
+                    
                     <div className="flex">
                       <img
                         className="mx-auto h-4 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
@@ -125,7 +138,7 @@ export function HeroSection() {
                       <img
                         className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
                         src="https://www.svgrepo.com/show/521288/javascript-16.svg"
-                        alt="JavaScript Logo"
+                        alt="TypeScript Logo"
                         height="28"
                         width="auto"
                       />

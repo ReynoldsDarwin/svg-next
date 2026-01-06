@@ -54,12 +54,23 @@ export function HeroSection() {
                         width="auto"
                       />
                     </div>
+
                     <div className="flex">
                       <img
-                        className="mx-auto h-4 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/github-twQNbc5nAy2jUs7yh5xic8hsEfBYpQ.svg"
+                        className="mx-auto h-9 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/508921/java.svg"
+                        alt="java Logo"
+                        height="36"
+                        width="auto"
+                      />
+                    </div>
+
+                    <div className="flex">
+                      <img
+                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/512317/github-142.svg"
                         alt="GitHub Logo"
-                        height="16"
+                        height="28"
                         width="auto"
                       />
                     </div>

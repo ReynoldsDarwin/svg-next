@@ -37,10 +37,10 @@ export function HeroSection() {
                   <InfiniteSlider durationOnHover={20} duration={40} gap={112}>
                     <div className="flex">
                       <img
-                        className="mx-auto h-8 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-9 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
                         src="https://www.svgrepo.com/show/503536/react.svg"
                         alt="React Logo"
-                        height="32"
+                        height="36"
                         width="auto"
                       />
                     </div>
@@ -92,20 +92,30 @@ export function HeroSection() {
                     </div>
                     <div className="flex">
                       <img
-                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/lilly-Jhslk9VPUVAVK2SCJmCGTEbqKMef5v.svg"
-                        alt="Lilly Logo"
-                        height="28"
+                        className="mx-auto h-10 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/508932/nodejs01.svg"
+                        alt="Node.js Logo"
+                        height="40"
                         width="auto"
                       />
                     </div>
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-6 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/openai-5TPubXl1hnLxeIs4ygVSLjJcUoBOCB.svg"
-                        alt="OpenAI Logo"
-                        height="24"
+                        className="mx-auto h-10 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/473760/postgresql.svg"
+                        alt="PostgreSQL Logo"
+                        height="40"
+                        width="auto"
+                      />
+                    </div>
+
+                    <div className="flex">
+                      <img
+                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/521320/typescript-16.svg"
+                        alt="TypeScript Logo"
+                        height="28"
                         width="auto"
                       />
                     </div>

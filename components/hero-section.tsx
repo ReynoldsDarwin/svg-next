@@ -48,16 +48,6 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-9 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/503536/react.svg"
-                        alt="React Logo"
-                        height="36"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
                         className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
                         src="https://www.svgrepo.com/show/512738/python-127.svg"
                         alt="python Logo"
@@ -132,6 +122,16 @@ export function HeroSection() {
                         src="https://www.svgrepo.com/show/369594/tailwind.svg"
                         alt="Tailwind CSS Logo"
                         height="28"
+                        width="auto"
+                      />
+                    </div>
+
+                    <div className="flex">
+                      <img
+                        className="mx-auto h-9 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/503536/react.svg"
+                        alt="React Logo"
+                        height="36"
                         width="auto"
                       />
                     </div>

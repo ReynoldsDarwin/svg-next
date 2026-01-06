@@ -135,6 +135,16 @@ export function HeroSection() {
                         width="auto"
                       />
                     </div>
+
+                    <div className="flex">
+                      <img
+                        className="mx-auto h-8 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/521299/next-16.svg"
+                        alt="Next.js Logo"
+                        height="32"
+                        width="auto"
+                      />
+                    </div>
                     
                     <div className="flex">
                       <img

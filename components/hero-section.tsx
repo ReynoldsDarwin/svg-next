@@ -165,6 +165,17 @@ export function HeroSection() {
                         width="auto"
                       />
                     </div>
+
+                    <div className="flex">
+                      <img
+                        className="mx-auto h-9 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/333604/spring-boot.svg"
+                        alt="Spring Boot Logo"
+                        height="36"
+                        width="auto"
+                      />
+                    </div>
+
                     <div className="flex">
                       <img
                         className="mx-auto h-10 w-fit invert opacity-60 hover:opacity-100 transition-opacity"

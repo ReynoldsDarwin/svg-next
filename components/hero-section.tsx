@@ -38,10 +38,10 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-9 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/509966/git.svg"
-                        alt="Git Logo"
-                        height="36"
+                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/512317/github-142.svg"
+                        alt="GitHub Logo"
+                        height="28"
                         width="auto"
                       />
                     </div>
@@ -188,6 +188,16 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
+                        className="mx-auto h-12 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/473731/mysql.svg"
+                        alt="MySQL Logo"
+                        height="48"
+                        width="auto"
+                      />
+                    </div>
+
+                    <div className="flex">
+                      <img
                         className="mx-auto h-10 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
                         src="https://www.svgrepo.com/show/473760/postgresql.svg"
                         alt="PostgreSQL Logo"
@@ -195,17 +205,18 @@ export function HeroSection() {
                         width="auto"
                       />
                     </div>
-
+                    
+                    
                     <div className="flex">
                       <img
-                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/512317/github-142.svg"
-                        alt="GitHub Logo"
-                        height="28"
+                        className="mx-auto h-9 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/509966/git.svg"
+                        alt="Git Logo"
+                        height="36"
                         width="auto"
                       />
                     </div>
-                    
+
 
                   </InfiniteSlider>
 

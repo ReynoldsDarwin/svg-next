@@ -71,7 +71,7 @@ export function Header() {
             About
           </a>
           <a
-            href="#about"
+            href="#testimonials"
             className="relative text-foreground/80 hover:text-foreground transition-all duration-300 group px-3 py-1 rounded-lg hover:bg-foreground/5 transform hover:scale-110 hover:-rotate-1 hover:-skew-x-1"
           >
             Testimonials

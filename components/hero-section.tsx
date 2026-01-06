@@ -31,7 +31,7 @@ export function HeroSection() {
             <div className="group relative m-auto max-w-6xl">
               <div className="flex flex-col items-center md:flex-row">
                 <div className="md:max-w-44 md:border-r md:border-gray-600 md:pr-6 mb-4 md:mb-0">
-                  <p className="text-end text-sm text-gray-400">Powering the best teams</p>
+                  <p className="text-end text-base font-semibold text-white/90">Stack actual para construir software sólido y escalable</p>
                 </div>
                 <div className="relative py-6 md:w-[calc(100%-11rem)]">
                   <InfiniteSlider durationOnHover={20} duration={40} gap={112}>

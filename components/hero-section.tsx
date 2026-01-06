@@ -145,13 +145,23 @@ export function HeroSection() {
                         width="auto"
                       />
                     </div>
+
+                    <div className="flex">
+                      <img
+                        className="mx-auto h-8 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/508908/django.svg"
+                        alt="Django Logo"
+                        height="32"
+                        width="auto"
+                      />
+                    </div>
                     
                     <div className="flex">
                       <img
-                        className="mx-auto h-4 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/laravel-sDCMR3A82V8F6ycZymrDlmiFpxyUd4.svg"
+                        className="mx-auto h-9 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/473693/laravel.svg"
                         alt="Laravel Logo"
-                        height="16"
+                        height="36"
                         width="auto"
                       />
                     </div>

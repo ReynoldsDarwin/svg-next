@@ -57,10 +57,40 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
+                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/521288/javascript-16.svg"
+                        alt="JavaScript Logo"
+                        height="28"
+                        width="auto"
+                      />
+                    </div>
+
+                    <div className="flex">
+                      <img
+                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/521320/typescript-16.svg"
+                        alt="TypeScript Logo"
+                        height="28"
+                        width="auto"
+                      />
+                    </div>
+
+                    <div className="flex">
+                      <img
                         className="mx-auto h-9 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
                         src="https://www.svgrepo.com/show/508921/java.svg"
                         alt="java Logo"
                         height="36"
+                        width="auto"
+                      />
+                    </div>
+
+                    <div className="flex">
+                      <img
+                        className="mx-auto h-10 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/314464/php.svg"
+                        alt="PHP Logo"
+                        height="40"
                         width="auto"
                       />
                     </div>
@@ -134,25 +164,6 @@ export function HeroSection() {
                       />
                     </div>
                     
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/521288/javascript-16.svg"
-                        alt="TypeScript Logo"
-                        height="28"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/521320/typescript-16.svg"
-                        alt="TypeScript Logo"
-                        height="28"
-                        width="auto"
-                      />
-                    </div>
 
                   </InfiniteSlider>
 

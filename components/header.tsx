@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { LeLoLogo } from "./lelo-logo"
+import { ADSA_Logo } from "./ADSA-logo"
 import { Button } from "./ui/button"
 
 export function Header() {
@@ -46,7 +46,7 @@ export function Header() {
         `}
       >
         <div className="transform transition-transform duration-200 hover:scale-105">
-          <LeLoLogo />
+          <ADSA_Logo />
         </div>
 
         <nav className="hidden md:flex items-center gap-6">

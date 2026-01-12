@@ -1,4 +1,4 @@
-import { LeLoLogo } from "./lelo-logo"
+import { ADSA_Logo } from "./ADSA-logo"
 
 export function Footer() {
   return (
@@ -6,7 +6,7 @@ export function Footer() {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <LeLoLogo className="mb-4" />
+            <ADSA_Logo className="mb-4" />
             <p className="text-white/70 mb-4 max-w-md">
               Empowering businesses with cutting-edge SaaS solutions. Take control of your success with LeLo.
             </p>

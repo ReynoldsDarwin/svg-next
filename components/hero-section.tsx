@@ -38,7 +38,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-9 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-9 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://www.svgrepo.com/show/475654/github-color.svg"
                         alt="GitHub Logo"
                         height="36"
@@ -48,7 +48,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-10 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/python-5.svg"
                         alt="python Logo"
                         height="40"
@@ -58,7 +58,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-9 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-9 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg"
                         alt="JavaScript Logo"
                         height="40"
@@ -68,7 +68,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-9 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-9 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/typescript-2.svg"
                         alt="TypeScript Logo"
                         height="36"
@@ -78,7 +78,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-10 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/java-14.svg"
                         alt="java Logo"
                         height="40"
@@ -88,7 +88,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-12 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-12 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://www.svgrepo.com/show/373966/php.svg"
                         alt="PHP Logo"
                         height="48"
@@ -98,7 +98,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-10 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/html-1.svg"
                         alt="HTML5 Logo"
                         height="40"
@@ -108,7 +108,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-10 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/css-3.svg"
                         alt="CSS3 Logo"
                         height="40"
@@ -118,7 +118,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-8 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-8 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
                         alt="Tailwind CSS Logo"
                         height="32"
@@ -128,7 +128,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-10 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/react-2.svg"
                         alt="React Logo"
                         height="40"
@@ -138,7 +138,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-8 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-8 w-fit invert opacity-80 hover:opacity-100 transition-opacity"
                         src="https://www.svgrepo.com/show/521299/next-16.svg"
                         alt="Next.js Logo"
                         height="32"
@@ -148,7 +148,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-9 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-9 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/django.svg"
                         alt="Django Logo"
                         height="36"
@@ -158,7 +158,7 @@ export function HeroSection() {
                     
                     <div className="flex">
                       <img
-                        className="mx-auto h-10 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/laravel-3.svg"
                         alt="Laravel Logo"
                         height="40"
@@ -168,7 +168,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-9 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-9 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/spring-3.svg"
                         alt="Spring Boot Logo"
                         height="36"
@@ -178,7 +178,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-8 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-8 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/nodejs.svg"
                         alt="Node.js Logo"
                         height="32"
@@ -188,7 +188,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-10 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://www.vectorlogo.zone/logos/mysql/mysql-official.svg"
                         alt="MySQL Logo"
                         height="40"
@@ -198,7 +198,7 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-10 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://cdn.worldvectorlogo.com/logos/postgresql.svg"
                         alt="PostgreSQL Logo"
                         height="40"
@@ -209,7 +209,7 @@ export function HeroSection() {
                     
                     <div className="flex">
                       <img
-                        className="mx-auto h-11 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        className="mx-auto h-11 w-fit opacity-80 hover:opacity-100 transition-opacity"
                         src="https://www.svgrepo.com/show/452210/git.svg"
                         alt="Git Logo"
                         height="44"

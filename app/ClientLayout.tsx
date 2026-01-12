@@ -26,7 +26,7 @@ function ClientLayoutContent({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={`font-sans ${inter.variable} ${jetbrainsMono.variable} ${playfair.variable}`}>{children}</body>
     </html>
   )
@@ -40,7 +40,7 @@ export default function ClientLayout({
   return (
     <Suspense
       fallback={
-        <html lang="en">
+        <html lang="es">
           <body className={`font-sans ${inter.variable} ${jetbrainsMono.variable} ${playfair.variable}`}>
             <div>Loading...</div>
           </body>

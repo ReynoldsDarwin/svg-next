@@ -88,10 +88,10 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-10 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/314464/php.svg"
+                        className="mx-auto h-12 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/373966/php.svg"
                         alt="PHP Logo"
-                        height="40"
+                        height="48"
                         width="auto"
                       />
                     </div>

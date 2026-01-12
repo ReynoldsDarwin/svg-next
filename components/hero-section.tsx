@@ -188,18 +188,18 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-12 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/473731/mysql.svg"
+                        className="mx-auto h-10 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.vectorlogo.zone/logos/mysql/mysql-official.svg"
                         alt="MySQL Logo"
-                        height="48"
+                        height="40"
                         width="auto"
                       />
                     </div>
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-10 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/473760/postgresql.svg"
+                        className="mx-auto h-10 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://cdn.worldvectorlogo.com/logos/postgresql.svg"
                         alt="PostgreSQL Logo"
                         height="40"
                         width="auto"
@@ -209,10 +209,10 @@ export function HeroSection() {
                     
                     <div className="flex">
                       <img
-                        className="mx-auto h-9 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/509966/git.svg"
+                        className="mx-auto h-11 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://www.svgrepo.com/show/452210/git.svg"
                         alt="Git Logo"
-                        height="36"
+                        height="44"
                         width="auto"
                       />
                     </div>

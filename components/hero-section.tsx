@@ -118,20 +118,20 @@ export function HeroSection() {
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-7 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/369594/tailwind.svg"
+                        className="mx-auto h-8 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
                         alt="Tailwind CSS Logo"
-                        height="28"
+                        height="32"
                         width="auto"
                       />
                     </div>
 
                     <div className="flex">
                       <img
-                        className="mx-auto h-9 w-fit invert opacity-60 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/503536/react.svg"
+                        className="mx-auto h-10 w-fit opacity-60 hover:opacity-100 transition-opacity"
+                        src="https://cdn.worldvectorlogo.com/logos/react-2.svg"
                         alt="React Logo"
-                        height="36"
+                        height="40"
                         width="auto"
                       />
                     </div>

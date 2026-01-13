@@ -45,52 +45,52 @@ export function Header() {
           }
         `}
       >
-        <div className="transform transition-transform duration-200 hover:scale-105">
-          <ADSA_Logo />
+        {/* LOGO */}
+        <div className="transform transition-transform duration-200 hover:scale-105 cursor-pointer">
+          <a href="#">
+            <ADSA_Logo />
+          </a>
         </div>
 
+        {/* MENÚ DE NAVEGACIÓN (Agency Style) */}
         <nav className="hidden md:flex items-center gap-6">
           <a
-            href="#features"
+            href="#servicios"
             className="relative text-foreground/80 hover:text-foreground transition-all duration-300 group px-3 py-1 rounded-lg hover:bg-foreground/5 transform hover:scale-110 hover:rotate-1 hover:skew-x-1"
           >
-            Features
+            Servicios
             <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-4"></span>
           </a>
           <a
-            href="#pricing"
+            href="#portafolio"
             className="relative text-foreground/80 hover:text-foreground transition-all duration-300 group px-3 py-1 rounded-lg hover:bg-foreground/5 transform hover:scale-110 hover:-rotate-1 hover:-skew-x-1"
           >
-            Pricing
+            Portafolio
             <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-4"></span>
           </a>
           <a
-            href="#about"
+            href="#nosotros"
             className="relative text-foreground/80 hover:text-foreground transition-all duration-300 group px-3 py-1 rounded-lg hover:bg-foreground/5 transform hover:scale-110 hover:rotate-1 hover:skew-x-1"
           >
-            About
+            Nosotros
           </a>
           <a
-            href="#testimonials"
+            href="#blog"
             className="relative text-foreground/80 hover:text-foreground transition-all duration-300 group px-3 py-1 rounded-lg hover:bg-foreground/5 transform hover:scale-110 hover:-rotate-1 hover:-skew-x-1"
           >
-            Testimonials
+            Blog
           </a>
         </nav>
 
+        {/* BOTONES DE ACCIÓN */}
         <div className="flex items-center gap-3">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-foreground/80 hover:text-foreground hover:bg-foreground/10 transition-all duration-200 rounded-xl"
-          >
-            Sign In
-          </Button>
+          {/* Eliminé el botón "Sign In" porque no es necesario para una agencia pública */}
+          
           <Button
             size="sm"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground transform transition-all duration-200 hover:scale-105 hover:shadow-lg rounded-xl"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground transform transition-all duration-200 hover:scale-105 hover:shadow-lg rounded-xl font-semibold"
           >
-            Contactanos
+            Contáctanos
           </Button>
         </div>
       </div>

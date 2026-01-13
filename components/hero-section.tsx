@@ -19,11 +19,11 @@ export function HeroSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button size="lg" className="bg-white hover:bg-gray-200 text-black group">
-              Start Free Trial
+              Iniciar Proyecto
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button size="lg" variant="outline" className="border-gray-600 text-white hover:bg-gray-800 bg-transparent">
-              Watch Demo
+              Stack Tecnológico
             </Button>
           </div>
 
@@ -31,7 +31,7 @@ export function HeroSection() {
             <div className="group relative m-auto max-w-6xl">
               <div className="flex flex-col items-center md:flex-row">
                 <div className="md:max-w-44 md:border-r md:border-gray-600 md:pr-6 mb-4 md:mb-0">
-                  <p className="text-end text-base font-semibold text-white/90">Stack actual para construir software sólido y escalable</p>
+                  <p className="text-end text-base font-semibold text-white/90">Trabajamos con software sólido y escalable</p>
                 </div>
                 <div className="relative py-6 md:w-[calc(100%-11rem)]">
                   <InfiniteSlider durationOnHover={20} duration={40} gap={112}>

@@ -18,7 +18,7 @@ const projects = [
     title: "App Móvil Fintech",
     category: "App Móvil • iOS & Android",
     description: "Billetera digital segura con integración de pagos QR y transferencias inmediatas.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=2070&auto=format&fit=crop",
+    image: "/fintech.png", // Tu imagen local
     tags: ["React Native", "Node.js", "AWS"],
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     title: "Visualizador de Audio 3D",
     category: "Experiencia Interactiva • OpenGL",
     description: "Renderizado de audio en tiempo real con efectos de partículas y shaders personalizados.",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop",
+    image: "/visualizer.jpeg", // Tu imagen local
     tags: ["Python", "OpenGL", "C++"],
   },
   {
@@ -59,28 +59,21 @@ export function PortfolioSection() {
       <div className="container mx-auto max-w-6xl relative z-10">
         
         {/* ENCABEZADO CENTRADO */}
-        {/* Usamos flex-col y items-center para asegurar que todo esté alineado al centro */}
         <div className="mb-16 flex flex-col items-center text-center">
           
-          {/* CONTENEDOR TÍTULO + LÍNEA */}
-          {/* 'w-fit' hace que esta caja mida EXACTAMENTE lo que mide el texto */}
           <div className="relative w-fit">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold text-white mb-2" // mb-2 para dar espacio a la línea
+              className="text-4xl md:text-5xl font-bold text-white mb-2"
             >
               Proyectos Destacados
             </motion.h2>
             
-            {/* LÍNEA ANIMADA */}
-            {/* absolute: para que flote sobre el contenedor del título */}
-            {/* bottom-0: pegado abajo */}
-            {/* animate={{ left: ... }}: Mueve la línea de 0 a (100% ancho - ancho línea) */}
             <motion.div 
               className="absolute -bottom-4 left-0 h-1 w-24 bg-primary rounded-full"
-              animate={{ left: "calc(100% - 6rem)" }} // 6rem es el ancho de w-24
+              animate={{ left: "calc(100% - 6rem)" }}
               transition={{
                 duration: 2.5,
                 ease: "easeInOut",
@@ -112,28 +105,30 @@ export function PortfolioSection() {
               transition={{ delay: index * 0.1 }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative h-[400px] w-full overflow-hidden rounded-2xl bg-neutral-900 border border-white/10 cursor-pointer"
+              tabIndex={0}
+              className="group relative h-[400px] w-full overflow-hidden rounded-2xl bg-neutral-900 border border-white/10 cursor-pointer focus:outline-none tap-highlight-transparent"
             >
               <div 
-                className="absolute inset-0 transition-all duration-700 ease-in-out group-hover:scale-105"
+                className="absolute inset-0 transition-transform duration-700 ease-in-out group-hover:scale-105 group-focus:scale-105"
               >
                 <div className="absolute inset-0 bg-neutral-900 z-0" />
                 
+                {/* CAMBIO 3: Agregamos 'group-focus:' junto a cada 'group-hover:' */}
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className={`
-                    w-full h-full object-cover transition-opacity duration-500
-                    ${hoveredIndex === index ? "opacity-100" : "opacity-40 grayscale"} 
-                  `}
+                  className="w-full h-full object-cover transition-all duration-500 opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-focus:opacity-100 group-focus:grayscale-0 relative z-10"
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500" />
+                {/* Overlay gradiente */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 group-focus:opacity-60 transition-opacity duration-500 z-20" />
               </div>
 
-              <div className="absolute inset-0 p-8 flex flex-col justify-end z-20">
+              {/* CONTENIDO (Texto) */}
+              <div className="absolute inset-0 p-8 flex flex-col justify-end z-30">
                 
-                <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
+                {/* Movimiento del texto hacia arriba */}
+                <div className="transform transition-transform duration-500 group-hover:-translate-y-2 group-focus:-translate-y-2">
                   <span className="text-primary font-mono text-xs tracking-widest uppercase mb-2 block">
                     {project.category}
                   </span>
@@ -142,7 +137,7 @@ export function PortfolioSection() {
                     {project.title}
                   </h3>
 
-                  <p className="text-gray-400 text-sm max-w-md line-clamp-2 mb-4 group-hover:text-white transition-colors duration-300">
+                  <p className="text-gray-400 text-sm max-w-md line-clamp-2 mb-4 group-hover:text-white group-focus:text-white transition-colors duration-300">
                     {project.description}
                   </p>
 
@@ -155,10 +150,11 @@ export function PortfolioSection() {
                   </div>
                 </div>
 
-                <div className="overflow-hidden h-0 group-hover:h-12 transition-all duration-300 ease-in-out">
-                    <div className="transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                {/* Botón "Ver Proyecto" - Se despliega en Hover y Focus */}
+                <div className="overflow-hidden h-0 group-hover:h-12 group-focus:h-12 transition-all duration-300 ease-in-out">
+                    <div className="transform translate-y-10 group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 delay-75">
                          <span className="inline-flex items-center text-white font-semibold border-b border-primary pb-1">
-                            Ver Caso de Estudio
+                            Ver Proyecto
                             <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                          </span>
                     </div>
@@ -166,7 +162,8 @@ export function PortfolioSection() {
 
               </div>
 
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/50 rounded-2xl transition-colors duration-300 pointer-events-none" />
+              {/* Borde neón */}
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/50 group-focus:border-primary/50 rounded-2xl transition-colors duration-300 pointer-events-none z-40" />
               
             </motion.div>
           ))}

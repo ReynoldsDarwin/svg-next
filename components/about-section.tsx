@@ -29,8 +29,8 @@ const features = [
 ]
 
 const stats = [
-  { label: "Proyectos Exitosos", value: "76+" },
-  { label: "De Horas Ahorradas", value: "Miles+" },
+  { label: "Negocios Optimizados", value: "76+" },
+  { label: "Horas Ahorradas", value: "Miles+" },
   { label: "Clientes Satisfechos", value: "98%" },
 ]
 
@@ -48,7 +48,7 @@ export function AboutSection() {
   return (
     <section id="nosotros" ref={containerRef} className="relative py-32 px-4 bg-black overflow-hidden min-h-screen flex items-center">
       
-      {/* --- FONDO: CASCADA DIGITAL (Solo Vertical) --- */}
+      {/* --- FONDO: CASCADA DIGITAL --- */}
       <div className="absolute inset-0 bg-black pointer-events-none z-0">
         {rainColumns.map((col) => (
             <motion.div
@@ -72,14 +72,26 @@ export function AboutSection() {
             
             {/* --- IZQUIERDA: Manifiesto --- */}
             <div className="relative">
-                <div className="absolute -left-6 md:-left-10 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-zinc-600 to-transparent opacity-50" />
+                {/* Línea lateral decorativa */}
+                <div className="absolute -left-6 md:-left-10 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-blue-500/50 to-transparent opacity-50" />
                 
-                {/* CAMBIO AQUÍ: Badge con borde redondeado y fondo */}
+                {/* BADGE CON LED INTERMITENTE (BLANCO/OSCURO) */}
                 <div className="mb-6">
                     <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary text-primary bg-black/50 font-mono text-xs md:text-sm tracking-[0.2em] uppercase backdrop-blur-md">
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        {/* Contenedor del LED */}
+                        <span className="relative flex items-center justify-center h-2.5 w-2.5">
+                            {/* HALO BLANCO (Fondo que respira) */}
+                            <motion.span 
+                                animate={{ opacity: [0, 0.8, 0] }} // Va de invisible a casi sólido y vuelve a invisible
+                                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute inline-flex h-full w-full rounded-full bg-white blur-[2px]"
+                            />
+                            {/* NÚCLEO BLANCO (Punto central que se prende y apaga) */}
+                            <motion.span 
+                                animate={{ opacity: [0.1, 1, 0.1] }} // Va de oscuro (0.1) a blanco total (1)
+                                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                                className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"
+                            />
                         </span>
                         El Núcleo de ADSA
                     </span>

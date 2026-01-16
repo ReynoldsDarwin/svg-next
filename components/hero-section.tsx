@@ -129,7 +129,7 @@ export function HeroSection() {
                     <div className="flex">
                       <img
                         className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/react-2.svg"
+                        src="https://www.svgrepo.com/show/354259/react.svg"
                         alt="React Logo"
                         height="40"
                         width="auto"
@@ -199,7 +199,7 @@ export function HeroSection() {
                     <div className="flex">
                       <img
                         className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/postgresql.svg"
+                        src="https://www.svgrepo.com/show/354200/postgresql.svg"
                         alt="PostgreSQL Logo"
                         height="40"
                         width="auto"

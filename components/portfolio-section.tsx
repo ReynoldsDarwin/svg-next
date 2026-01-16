@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+// Importamos Particles en lugar de Plasma
+import Particles from "@/components/ui/particles"
 
 const projects = [
   {
@@ -18,7 +20,7 @@ const projects = [
     title: "App Móvil Fintech",
     category: "App Móvil • iOS & Android",
     description: "Billetera digital segura con integración de pagos QR y transferencias inmediatas.",
-    image: "/fintech.png", // Tu imagen local
+    image: "/fintech.png", // Tu imagen local CONSERVADA
     tags: ["React Native", "Node.js", "AWS"],
   },
   {
@@ -26,7 +28,7 @@ const projects = [
     title: "Visualizador de Audio 3D",
     category: "Experiencia Interactiva • OpenGL",
     description: "Renderizado de audio en tiempo real con efectos de partículas y shaders personalizados.",
-    image: "/visualizer.jpeg", // Tu imagen local
+    image: "/visualizer.jpeg", // Tu imagen local CONSERVADA
     tags: ["Python", "OpenGL", "C++"],
   },
   {
@@ -43,17 +45,27 @@ export function PortfolioSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section id="portafolio" className="py-24 px-4 bg-black relative">
+    <section id="portafolio" className="py-24 px-4 bg-black relative min-h-screen overflow-hidden">
       
-      {/* Fondo grid sutil */}
-      <div className="absolute inset-0 opacity-[0.1] pointer-events-none">
-        <div 
-          className="w-full h-full"
-          style={{
-             backgroundImage: `linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)`,
-             backgroundSize: '40px 40px'
-          }}
-        />
+      {/* --- FONDO DE PARTÍCULAS (Adaptado para Portafolio) --- */}
+      <div className="absolute inset-0 z-0">
+          <Particles
+            particleCount={400}        // Cantidad media de partículas
+            particleSpread={10}
+            speed={0.3}                // Velocidad más lenta y elegante
+            particleColors={['#ffffff', '#857F7E']} 
+            moveParticlesOnHover={true} 
+            particleHoverFactor={1.5}
+            alphaParticles={false}
+            particleBaseSize={300}    
+            sizeRandomness={1}
+            cameraDistance={20}
+            disableRotation={false}
+            className="h-full w-full opacity-70" // Transparencia 
+          />
+          
+          {/* Degradado sutil superior e inferior para suavizar cortes */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -113,7 +125,6 @@ export function PortfolioSection() {
               >
                 <div className="absolute inset-0 bg-neutral-900 z-0" />
                 
-                {/* CAMBIO 3: Agregamos 'group-focus:' junto a cada 'group-hover:' */}
                 <img 
                   src={project.image} 
                   alt={project.title}

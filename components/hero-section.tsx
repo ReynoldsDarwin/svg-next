@@ -199,7 +199,7 @@ export function HeroSection() {
                     <div className="flex">
                       <img
                         className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/354200/postgresql.svg"
+                        src="https://www.svgrepo.com/show/303301/postgresql-logo.svg"
                         alt="PostgreSQL Logo"
                         height="40"
                         width="auto"

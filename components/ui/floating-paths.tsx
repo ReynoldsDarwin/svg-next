@@ -9,7 +9,7 @@ function FloatingPaths({ position }: { position: number }) {
     const newPaths = Array.from({ length: 32 }, (_, i) => {
       const randomDashLength = 120 + Math.random() * 180
       const randomGap = 80 + Math.random() * 60
-      const randomDuration = 5 + Math.random() * 3
+      const randomDuration = 2 + Math.random() * 3
       const randomDelay = Math.random() * 4
 
       return {
@@ -85,7 +85,7 @@ function FlippedFloatingPaths({ position }: { position: number }) {
     const newPaths = Array.from({ length: 32 }, (_, i) => {
       const randomDashLength = 120 + Math.random() * 180
       const randomGap = 80 + Math.random() * 60
-      const randomDuration = 5 + Math.random() * 3
+      const randomDuration = 2 + Math.random() * 3
       const randomDelay = Math.random() * 4
 
       return {

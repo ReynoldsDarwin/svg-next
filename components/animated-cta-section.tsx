@@ -1,15 +1,16 @@
 "use client"
 
 import { useRef } from "react"
-import { Button } from "./ui/button"
+import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
-import { BackgroundPaths } from "./ui/floating-paths"
+import { BackgroundPaths } from "@/components/ui/floating-paths"
 
 export function AnimatedCTASection() {
   const contentRef = useRef<HTMLDivElement>(null)
 
   return (
-    <section className="relative py-20 px-4 overflow-hidden">
+    // CAMBIO 1: Reduje py-20 a 'py-12 md:py-24' para ahorrar espacio vertical en móvil
+    <section className="relative py-12 md:py-24 px-4 overflow-hidden">
       <div className="absolute inset-0">
         <div className="h-full w-full bg-gradient-to-br from-gray-900 via-black to-gray-800">
           <BackgroundPaths />
@@ -28,9 +29,9 @@ export function AnimatedCTASection() {
       </div>
 
       <div className="absolute inset-0 bg-black/20" />
-
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
+      
       <div
         className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/40"
         style={{
@@ -40,32 +41,37 @@ export function AnimatedCTASection() {
 
       <div className="relative z-10 container mx-auto">
         <div
-          className="rounded-2xl p-12 text-center animate-fade-in-up"
+          // CAMBIO 2: Reduje p-12 a 'p-6 md:p-12' para compactar el contenido interno
+          className="rounded-2xl p-6 md:p-12 text-center animate-fade-in-up"
           ref={contentRef}
           style={{ animationDelay: "0.3s" }}
         >
           <h2
-            className="text-4xl font-bold text-white mb-4 drop-shadow-lg animate-fade-in-up"
+            // CAMBIO 3: Ajusté el tamaño de fuente para móvil (text-3xl) vs escritorio (md:text-5xl)
+            className="text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg animate-fade-in-up leading-tight"
             style={{ fontFamily: "var(--font-playfair)", animationDelay: "0.5s" }}
           >
-            Ready to Transform Your Business?
+            ¿Listo para Transformar tu Negocio?
           </h2>
+          
           <p
-            className="text-xl text-white/90 mb-8 max-w-2xl mx-auto drop-shadow-md animate-fade-in-up"
+            // CAMBIO 4: Reduje el margen inferior (mb-6 en vez de mb-8)
+            className="text-lg md:text-xl text-white/90 mb-6 max-w-2xl mx-auto drop-shadow-md animate-fade-in-up"
             style={{ animationDelay: "0.7s" }}
           >
-            Join thousands of companies already using LeLo to streamline their operations and boost productivity.
+            Únete a las empresas que ya han modernizado sus operaciones y potenciado su productividad con las soluciones de ADSA.
           </p>
+          
           <div
-            className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-up"
             style={{ animationDelay: "0.9s" }}
           >
-            <Button size="lg" className="bg-white text-black hover:bg-white/90 group">
-              Start Your Free Trial
+            <Button size="lg" className="bg-white text-black hover:bg-white/90 group w-full sm:w-auto">
+              Agendar Consultoría
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent">
-              Contact Sales
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent w-full sm:w-auto">
+              Hablemos por WhatsApp
             </Button>
           </div>
         </div>

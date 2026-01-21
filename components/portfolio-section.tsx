@@ -47,6 +47,14 @@ const projects = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
     tags: ["React", "Tailwind", "Framer Motion"],
   },
+  {
+    id: 6,
+    title: "Sistema de ventas e Inventario",
+    category: "Sistema Web • Dashboard",
+    description: "Plataforma integral para gestión de ventas e inventario con reportes en tiempo real.",
+    image: "/SistemaDeInventarioVenta.png",
+    tags: ["Flask", "Tailwind CSS", "MySQL"],
+  },
 ]
 
 export function PortfolioSection() {

@@ -6,28 +6,36 @@ import { ProgressiveBlur } from "./ui/progressive-blur"
 
 export function HeroSection() {
   return (
-    <section className="py-20 px-4 relative overflow-hidden min-h-screen flex flex-col justify-between">
-      <div className="flex-1 flex items-start justify-center pt-20">
-        <ParticleTextEffect words={["ADSA", "ADSA", "Agencia de", "Desarrollo de Software", "del Altiplano"]} />
+    <section className="py-10 md:py-20 px-4 relative overflow-hidden min-h-screen flex flex-col justify-between">
+      
+      <div className="flex-1 flex items-start justify-center pt-0 md:pt-20">
+        <ParticleTextEffect words={["ADSA", "ADSA", "Agencia de", "Desarrollo", "de Software", "del Altiplano"]} />
       </div>
 
-      <div className="container mx-auto text-center relative z-10 pb-8">
+      {/* CAMBIO AQUÍ: 
+          - Mantenemos 'pb-24' para móvil (se ve bien).
+          - Reducimos 'md:pb-32' a 'md:pb-12' en escritorio.
+          
+          Al tener menos padding abajo, todo el bloque de contenido (texto, botones, slider)
+          caerá más cerca del borde inferior, alejándose del efecto "ADSA".
+      */}
+      <div className="container mx-auto text-center relative z-10 pb-24 md:pb-12">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-white/70 mb-6 text-balance">
+          <h2 className="text-xl md:text-3xl font-bold text-white/70 mb-6 text-balance">
             Donde la visión se convierte en software excepcional
           </h2>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 md:mb-12">
             <Button size="lg" className="bg-white hover:bg-gray-200 text-black group">
               Iniciar Proyecto
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button size="lg" variant="outline" className="border-gray-600 text-white hover:bg-gray-800 bg-transparent">
-              Stack Tecnológico
+              Conócenos Más
             </Button>
           </div>
 
-          <div className="mt-16 mb-8">
+          <div className="mt-8 md:mt-16 mb-8">
             <div className="group relative m-auto max-w-6xl">
               <div className="flex flex-col items-center md:flex-row">
                 <div className="md:max-w-44 md:border-r md:border-gray-600 md:pr-6 mb-4 md:mb-0">

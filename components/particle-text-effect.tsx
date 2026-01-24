@@ -145,53 +145,50 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
     canvasWidth: number,
     canvasHeight: number,
   ): Vector2D => {
-    // Generate random angle from 0 to 2π (full circle)
     const angle = Math.random() * Math.PI * 2
-
-    // Calculate position on circle perimeter at distance 'mag' from center
     const startX = x + Math.cos(angle) * mag
     const startY = y + Math.sin(angle) * mag
-
-    return {
-      x: startX,
-      y: startY,
-    }
+    return { x: startX, y: startY }
   }
 
+  // --- FUNCIÓN MODIFICADA ---
   const nextWord = (word: string, canvas: HTMLCanvasElement) => {
-    // Create off-screen canvas for text rendering
     const offscreenCanvas = document.createElement("canvas")
     offscreenCanvas.width = canvas.width
     offscreenCanvas.height = canvas.height
     const offscreenCtx = offscreenCanvas.getContext("2d")!
 
-    // Draw text
+    // CAMBIO 1: Detección básica de móvil (si el ancho es menor a 768px)
+    const isMobile = canvas.width < 768
+
+    // CAMBIO 2: Tamaño de fuente dinámico
+    // En móvil usamos 70px (más pequeño) para que quepa bien, en escritorio 130px (más grande e impactante)
+    const fontSize = isMobile ? 70 : 130 
+
+    // CAMBIO 3: Posición Vertical (Y)
+    // En móvil lo subimos al 25% (height/4) para evitar colisión.
+    // En escritorio lo dejamos al 33% (height/3) o lo centramos un poco más.
+    const yPos = isMobile ? canvas.height / 4 : canvas.height / 3.2
+
     offscreenCtx.fillStyle = "white"
-    offscreenCtx.font = "bold 100px Arial"
+    offscreenCtx.font = `bold ${fontSize}px Arial` // Aplicamos el tamaño dinámico
     offscreenCtx.textAlign = "center"
     offscreenCtx.textBaseline = "middle"
-    offscreenCtx.fillText(word, canvas.width / 2, canvas.height / 3)
+    offscreenCtx.fillText(word, canvas.width / 2, yPos) // Aplicamos la posición dinámica
 
     const imageData = offscreenCtx.getImageData(0, 0, canvas.width, canvas.height)
     const pixels = imageData.data
 
-    // Generate new color
-    const newColor = {
-      r: 255, // White particles
-      g: 255,
-      b: 255,
-    }
+    const newColor = { r: 255, g: 255, b: 255 }
 
     const particles = particlesRef.current
     let particleIndex = 0
 
-    // Collect coordinates
     const coordsIndexes: number[] = []
     for (let i = 0; i < pixels.length; i += pixelSteps * 4) {
       coordsIndexes.push(i)
     }
 
-    // Shuffle coordinates for fluid motion
     for (let i = coordsIndexes.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
       ;[coordsIndexes[i], coordsIndexes[j]] = [coordsIndexes[j], coordsIndexes[i]]
@@ -213,7 +210,6 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
           particleIndex++
         } else {
           particle = new Particle()
-
           const randomPos = generateRandomPos(
             canvas.width / 2,
             canvas.height / 2,
@@ -223,16 +219,13 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
           )
           particle.pos.x = randomPos.x
           particle.pos.y = randomPos.y
-
           particle.maxSpeed = Math.random() * 6 + 4
           particle.maxForce = particle.maxSpeed * 0.05
           particle.particleSize = Math.random() * 6 + 6
           particle.colorBlendRate = Math.random() * 0.0275 + 0.0025
-
           particles.push(particle)
         }
 
-        // Set color transition
         particle.startColor = {
           r: particle.startColor.r + (particle.targetColor.r - particle.startColor.r) * particle.colorWeight,
           g: particle.startColor.g + (particle.targetColor.g - particle.startColor.g) * particle.colorWeight,
@@ -240,13 +233,11 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
         }
         particle.targetColor = newColor
         particle.colorWeight = 0
-
         particle.target.x = x
         particle.target.y = y
       }
     }
 
-    // Kill remaining particles
     for (let i = particleIndex; i < particles.length; i++) {
       particles[i].kill(canvas.width, canvas.height)
     }
@@ -259,17 +250,14 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
     const ctx = canvas.getContext("2d")!
     const particles = particlesRef.current
 
-    // Background with motion blur
     ctx.fillStyle = "rgba(0, 0, 0, 0.1)"
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    // Update and draw particles
     for (let i = particles.length - 1; i >= 0; i--) {
       const particle = particles[i]
       particle.move()
       particle.draw(ctx, drawAsPoints)
 
-      // Remove dead particles that are out of bounds
       if (particle.isKilled) {
         if (
           particle.pos.x < 0 ||
@@ -282,7 +270,6 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
       }
     }
 
-    // Handle mouse interaction
     if (mouseRef.current.isPressed && mouseRef.current.isRightClick) {
       particles.forEach((particle) => {
         const distance = Math.sqrt(
@@ -294,7 +281,6 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
       })
     }
 
-    // Auto-advance words
     frameCountRef.current++
     if (frameCountRef.current % 240 === 0) {
       wordIndexRef.current = (wordIndexRef.current + 1) % words.length
@@ -316,16 +302,10 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
       }
     }
 
-    // Initial resize
     resizeCanvas()
-
-    // Initialize with first word
     nextWord(words[0], canvas)
-
-    // Start animation
     animate()
 
-    // Mouse event handlers
     const handleMouseDown = (e: MouseEvent) => {
       mouseRef.current.isPressed = true
       mouseRef.current.isRightClick = e.button === 2
@@ -351,7 +331,6 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
 
     const handleResize = () => {
       resizeCanvas()
-      // Reinitialize particles with new dimensions
       nextWord(words[wordIndexRef.current], canvas)
     }
 

@@ -9,8 +9,12 @@ export function AnimatedCTASection() {
   const contentRef = useRef<HTMLDivElement>(null)
 
   return (
-    // CAMBIO 1: Reduje py-20 a 'py-12 md:py-24' para ahorrar espacio vertical en móvil
-    <section className="relative py-12 md:py-24 px-4 overflow-hidden">
+    // CAMBIO CLAVE AQUÍ:
+    // 1. 'min-h-[60dvh]': En móvil, forzamos a que mida al menos el 60% de la pantalla.
+    // 2. 'flex flex-col justify-center': Centramos el contenido verticalmente en ese espacio.
+    // 3. 'md:min-h-0': En escritorio (md) quitamos la altura forzada para respetar el diseño original que te gustaba.
+    <section className="relative min-h-[60dvh] md:min-h-0 flex flex-col justify-center py-12 md:py-24 px-4 overflow-hidden">
+      
       <div className="absolute inset-0">
         <div className="h-full w-full bg-gradient-to-br from-gray-900 via-black to-gray-800">
           <BackgroundPaths />
@@ -41,13 +45,11 @@ export function AnimatedCTASection() {
 
       <div className="relative z-10 container mx-auto">
         <div
-          // CAMBIO 2: Reduje p-12 a 'p-6 md:p-12' para compactar el contenido interno
           className="rounded-2xl p-6 md:p-12 text-center animate-fade-in-up"
           ref={contentRef}
           style={{ animationDelay: "0.3s" }}
         >
           <h2
-            // CAMBIO 3: Ajusté el tamaño de fuente para móvil (text-3xl) vs escritorio (md:text-5xl)
             className="text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg animate-fade-in-up leading-tight"
             style={{ fontFamily: "var(--font-playfair)", animationDelay: "0.5s" }}
           >
@@ -55,8 +57,7 @@ export function AnimatedCTASection() {
           </h2>
           
           <p
-            // CAMBIO 4: Reduje el margen inferior (mb-6 en vez de mb-8)
-            className="text-lg md:text-xl text-white/90 mb-6 max-w-2xl mx-auto drop-shadow-md animate-fade-in-up"
+            className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto drop-shadow-md animate-fade-in-up"
             style={{ animationDelay: "0.7s" }}
           >
             Únete a las empresas que ya han modernizado sus operaciones y potenciado su productividad con las soluciones de ADSA.
@@ -66,11 +67,11 @@ export function AnimatedCTASection() {
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-up"
             style={{ animationDelay: "0.9s" }}
           >
-            <Button size="lg" className="bg-white text-black hover:bg-white/90 group w-full sm:w-auto">
+            <Button size="lg" className="bg-white text-black hover:bg-white/90 group w-full sm:w-auto h-12 text-base">
               Agendar Consultoría
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent w-full sm:w-auto">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-transparent w-full sm:w-auto h-12 text-base">
               Hablemos por WhatsApp
             </Button>
           </div>

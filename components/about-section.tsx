@@ -3,8 +3,8 @@
 import { useRef } from "react"
 import { motion } from "framer-motion"
 import { Blocks, Gauge, Server, ShieldCheck } from "lucide-react"
+import Particles from "@/components/ui/particles" 
 
-// --- DATOS APROBADOS ---
 const features = [
   {
     icon: <Blocks />,
@@ -37,34 +37,26 @@ const stats = [
 export function AboutSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   
-  // Generamos columnas de lluvia aleatorias
-  const rainColumns = Array.from({ length: 20 }).map((_, i) => ({
-    id: i,
-    delay: Math.random() * 2,
-    duration: 2 + Math.random() * 3,
-    left: `${(i / 20) * 100}%`
-  }))
-
   return (
-    <section id="nosotros" ref={containerRef} className="relative py-32 px-4 bg-black overflow-hidden min-h-screen flex items-center">
+    <section id="nosotros" ref={containerRef} className="relative py-20 md:py-32 px-4 bg-black overflow-hidden min-h-[80vh] flex items-center">
       
-      {/* --- FONDO: CASCADA DIGITAL --- */}
-      <div className="absolute inset-0 bg-black pointer-events-none z-0">
-        {rainColumns.map((col) => (
-            <motion.div
-                key={col.id}
-                className="absolute top-0 w-[1px] bg-gradient-to-b from-transparent via-primary/50 to-transparent"
-                style={{ left: col.left, height: "100%" }}
-                animate={{ y: ["-100%", "100%"] }}
-                transition={{ 
-                    duration: col.duration, 
-                    repeat: Infinity, 
-                    ease: "linear", 
-                    delay: col.delay 
-                }}
-            />
-        ))}
-        <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,#000_100%)]" />
+      {/* --- FONDO DE PARTÍCULAS --- */}
+      <div className="absolute inset-0 z-0">
+        <Particles
+            particleCount={500}
+            particleSpread={5}
+            speed={0.4}
+            particleColors={['#ffffff', '#06b6d4']}
+            moveParticlesOnHover={false}
+            particleHoverFactor={1}
+            alphaParticles={false}
+            particleBaseSize={70}
+            sizeRandomness={1}
+            cameraDistance={20}
+            disableRotation={false}
+            className="h-full w-full"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
       </div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
@@ -75,20 +67,17 @@ export function AboutSection() {
                 {/* Línea lateral decorativa */}
                 <div className="absolute -left-6 md:-left-10 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-blue-500/50 to-transparent opacity-50" />
                 
-                {/* BADGE CON LED INTERMITENTE (BLANCO/OSCURO) */}
+                {/* BADGE CON LED INTERMITENTE */}
                 <div className="mb-6">
                     <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary text-primary bg-black/50 font-mono text-xs md:text-sm tracking-[0.2em] uppercase backdrop-blur-md">
-                        {/* Contenedor del LED */}
                         <span className="relative flex items-center justify-center h-2.5 w-2.5">
-                            {/* HALO BLANCO (Fondo que respira) */}
                             <motion.span 
-                                animate={{ opacity: [0, 0.8, 0] }} // Va de invisible a casi sólido y vuelve a invisible
+                                animate={{ opacity: [0, 0.8, 0] }}
                                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                                 className="absolute inline-flex h-full w-full rounded-full bg-white blur-[2px]"
                             />
-                            {/* NÚCLEO BLANCO (Punto central que se prende y apaga) */}
                             <motion.span 
-                                animate={{ opacity: [0.1, 1, 0.1] }} // Va de oscuro (0.1) a blanco total (1)
+                                animate={{ opacity: [0.1, 1, 0.1] }}
                                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                                 className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"
                             />
@@ -97,19 +86,19 @@ export function AboutSection() {
                     </span>
                 </div>
                 
-                <h3 className="text-5xl md:text-6xl lg:text-6xl font-black text-white mb-8 leading-[1.1]">
-                    Tú enfócate en tu negocio, nosotros <br/> 
+                <h3 className="text-4xl md:text-6xl lg:text-6xl font-black text-white mb-8 leading-[1.1]">
+                    Tú enfócate en tu negocio, nosotros <br className="hidden md:block"/> 
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-blue-700">
                         nos encargamos de la Tecnología
                     </span>
                 </h3>
                 
-                <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-lg mb-12">
+                <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-lg mb-12 drop-shadow-md">
                     Sabemos que lidiar con sistemas lentos o procesos manuales es agotador. En ADSA analizamos dónde pierde tiempo tu empresa y creamos la herramienta exacta para solucionarlo. Sin complicaciones, solo resultados que te dan tranquilidad.
                 </p>
                 
                 {/* Estadísticas */}
-                <div className="flex gap-8 mt-8">
+                <div className="flex gap-8 mt-8 pt-8">
                     {stats.map((s,i) => (
                         <div key={i}>
                             <p className="text-3xl md:text-4xl font-bold text-white mb-1">{s.value}</p>
@@ -127,7 +116,7 @@ export function AboutSection() {
                         initial={{ x: 50, opacity: 0 }}
                         whileInView={{ x: 0, opacity: 1 }}
                         transition={{ delay: i * 0.1, duration: 0.5 }}
-                        className="flex items-start p-6 border-r-2 border-white/10 bg-white/[0.02] backdrop-blur-sm rounded-l-xl cursor-default group transition-all duration-300 ease-out hover:border-primary hover:bg-white/[0.05] hover:-translate-x-2"
+                        className="flex items-start p-6 border-r-2 border-white/10 bg-black/40 backdrop-blur-sm rounded-l-xl cursor-default group transition-all duration-300 ease-out hover:border-primary hover:bg-blue-800 hover:-translate-x-2"
                     >
                         <div className="mr-6 mt-1 text-gray-500 group-hover:text-primary transition-colors transform group-hover:scale-110 duration-300">
                             {feature.icon}

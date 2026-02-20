@@ -11,14 +11,6 @@ export function HeroSection() {
       <div className="flex-1 flex items-start justify-center pt-0 md:pt-20">
         <ParticleTextEffect words={["ADSA", "ADSA", "Agencia de", "Desarrollo", "de Software", "del Altiplano"]} />
       </div>
-
-      {/* CAMBIO AQUÍ: 
-          - Mantenemos 'pb-24' para móvil (se ve bien).
-          - Reducimos 'md:pb-32' a 'md:pb-12' en escritorio.
-          
-          Al tener menos padding abajo, todo el bloque de contenido (texto, botones, slider)
-          caerá más cerca del borde inferior, alejándose del efecto "ADSA".
-      */}
       <div className="container mx-auto text-center relative z-10 pb-24 md:pb-12">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-xl md:text-3xl font-bold text-white/70 mb-6 text-balance">

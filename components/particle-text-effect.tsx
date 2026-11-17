@@ -249,8 +249,16 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
     const ctx = canvas.getContext("2d")!
     const particles = particlesRef.current
 
-    ctx.fillStyle = "rgba(0, 0, 0, 0.1)"
+    // Estela: oscurece el frame anterior en lugar de borrarlo.
+    ctx.globalCompositeOperation = "source-over"
+    ctx.fillStyle = "rgba(0, 0, 0, 0.08)"
     ctx.fillRect(0, 0, canvas.width, canvas.height)
+    // Por redondeo de 8 bits el fundido se estanca en rgb(4,4,4) y deja "caminos de polvo".
+    // color-burn con un gris casi blanco lleva a 0 los valores < ~4/255 y apenas toca el resto.
+    ctx.globalCompositeOperation = "color-burn"
+    ctx.fillStyle = "rgb(251, 251, 251)"
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.globalCompositeOperation = "source-over"
 
     for (let i = particles.length - 1; i >= 0; i--) {
       const particle = particles[i]
@@ -308,6 +316,10 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
         canvas.width = container.clientWidth
         canvas.height = container.clientHeight
       }
+      // Cambiar el tamaño deja el canvas transparente; el color-burn del fundido necesita una base opaca.
+      const ctx = canvas.getContext("2d")!
+      ctx.fillStyle = "black"
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
     }
 
     resizeCanvas()
@@ -369,7 +381,7 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
 
   return (
     <div className="w-full h-full absolute inset-0">
-      <canvas ref={canvasRef} className="w-full h-full" style={{ background: "black", zIndex: 10 }} />
+      <canvas ref={canvasRef} className="w-full h-full bg-black" />
     </div>
   )
 }

@@ -29,7 +29,7 @@ const TECH_LOGOS: { name: string; src: string; className: string }[] = [
 
 export function HeroSection() {
   return (
-    <section className="py-10 md:py-20 px-4 relative overflow-hidden min-h-screen flex flex-col justify-between">
+    <section className="py-10 md:py-20 px-4 bg-black relative overflow-hidden min-h-screen flex flex-col justify-between">
       <div className="flex-1 flex items-start justify-center pt-0 md:pt-20">
         <ParticleTextEffect words={HERO_WORDS} />
       </div>

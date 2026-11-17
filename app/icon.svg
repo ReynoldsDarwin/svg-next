@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 38 38">
+  <!-- Favicon: mismo icono que ADSA_Logo (components/ADSA-logo.tsx) sobre fondo negro para verse en pestañas claras y oscuras. -->
+  <style>
+    .dash { stroke-dasharray: 25 92; animation: travel 3s linear infinite; }
+    @keyframes travel { from { stroke-dashoffset: 92; } to { stroke-dashoffset: -92; } }
+  </style>
+  <defs>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="0.5" />
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1" result="b" />
+      <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <rect x="-3" y="-3" width="38" height="38" rx="8" fill="#000" />
+
+  <!-- Montaña trasera (sombra) -->
+  <polygon points="17,3 31,30 3,30" transform="translate(0.5 0.5)" fill="#fff" fill-opacity="0.3" filter="url(#soft)" />
+  <!-- Montaña frontal -->
+  <polygon points="16,2 30,30 2,30" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+  <!-- Guion que recorre el triángulo -->
+  <polygon class="dash" points="16,2 30,30 2,30" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" filter="url(#glow)" />
+  <!-- Rombo interno -->
+  <rect x="8" y="8" width="8" height="8" fill="#fff" transform="rotate(45 16 16)" filter="url(#glow)" />
+</svg>

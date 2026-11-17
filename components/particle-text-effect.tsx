@@ -125,11 +125,11 @@ interface ParticleTextEffectProps {
   words?: string[]
 }
 
-const DEFAULT_WORDS = ["LeLo", "SAAS", "PLATFORM", "LELO"]
+const DEFAULT_WORDS = ["ADSA"]
 
 export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number>(0)
   const particlesRef = useRef<Particle[]>([])
   const frameCountRef = useRef(0)
   const wordIndexRef = useRef(0)
@@ -151,7 +151,6 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
     return { x: startX, y: startY }
   }
 
-  // --- FUNCIÓN MODIFICADA ---
   const nextWord = (word: string, canvas: HTMLCanvasElement) => {
     const offscreenCanvas = document.createElement("canvas")
     offscreenCanvas.width = canvas.width
@@ -290,6 +289,15 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
     animationRef.current = requestAnimationFrame(animate)
   }
 
+  const start = () => {
+    if (!animationRef.current) animationRef.current = requestAnimationFrame(animate)
+  }
+
+  const stop = () => {
+    cancelAnimationFrame(animationRef.current)
+    animationRef.current = 0
+  }
+
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -304,7 +312,10 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
 
     resizeCanvas()
     nextWord(words[0], canvas)
-    animate()
+
+    // Solo anima mientras el hero es visible.
+    const observer = new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop()))
+    observer.observe(canvas)
 
     const handleMouseDown = (e: MouseEvent) => {
       mouseRef.current.isPressed = true
@@ -329,21 +340,25 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
       e.preventDefault()
     }
 
+    let resizeTimer: ReturnType<typeof setTimeout>
     const handleResize = () => {
-      resizeCanvas()
-      nextWord(words[wordIndexRef.current], canvas)
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(() => {
+        resizeCanvas()
+        nextWord(words[wordIndexRef.current], canvas)
+      }, 150)
     }
 
     canvas.addEventListener("mousedown", handleMouseDown)
     canvas.addEventListener("mouseup", handleMouseUp)
     canvas.addEventListener("mousemove", handleMouseMove)
     canvas.addEventListener("contextmenu", handleContextMenu)
-    window.addEventListener("resize", handleResize)
+    window.addEventListener("resize", handleResize, { passive: true })
 
     return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-      }
+      stop()
+      observer.disconnect()
+      clearTimeout(resizeTimer)
       canvas.removeEventListener("mousedown", handleMouseDown)
       canvas.removeEventListener("mouseup", handleMouseUp)
       canvas.removeEventListener("mousemove", handleMouseMove)

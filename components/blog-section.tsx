@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowRight, Calendar, Clock, Tag } from "lucide-react"
 import Image from "next/image"
-import Particles from "./ui/particles" // Asegúrate de que la ruta coincida con donde guardaste el archivo
+import Particles from "./ui/particles"
 
 // --- DATOS: ARTÍCULOS ---
 const posts = [
@@ -69,7 +69,7 @@ export function BlogSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-primary font-mono text-xs md:text-sm tracking-[0.3em] uppercase mb-4"
+                className="text-primary text-xs md:text-sm tracking-[0.3em] uppercase mb-4"
             >
                 Conocimiento Estratégico
             </motion.h2>
@@ -118,12 +118,13 @@ export function BlogSection() {
                             src={post.image} 
                             alt={post.title}
                             fill
+                            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                             className="object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out grayscale group-hover:grayscale-0"
                         />
                         
                         {/* BADGE DE CATEGORÍA */}
                         <div className="absolute top-4 left-4 z-20">
-                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 border border-white/20 text-xs font-mono text-primary backdrop-blur-md uppercase tracking-wide">
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 border border-white/20 text-xs text-primary backdrop-blur-md uppercase tracking-wide">
                                 <Tag className="w-3 h-3" />
                                 {post.category}
                             </span>
@@ -132,7 +133,7 @@ export function BlogSection() {
 
                     {/* CONTENIDO DEL POST */}
                     <div className="flex flex-col flex-grow p-6">
-                        <div className="flex items-center gap-4 text-xs text-gray-500 mb-4 font-mono">
+                        <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
                             <span className="flex items-center gap-1">
                                 <Calendar className="w-3 h-3" />
                                 {post.date}

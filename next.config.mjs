@@ -1,16 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
-    unoptimized: true,
+    formats: ["image/avif", "image/webp"],
+    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
   },
-  // --- AGREGAR ESTO PARA OCULTAR LA "N" ---
-  devIndicators: {
-    buildActivity: false, // Oculta el indicador de actividad de compilación
-    appIsrStatus: false,  // Oculta el indicador de estado estático/dinámico
-  },
+  devIndicators: false,
 }
 
 export default nextConfig

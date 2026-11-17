@@ -1,20 +1,11 @@
+// Perímetro del triángulo ≈ 92: el keyframe travel-path (globals.css) usa ese valor.
 export function ADSA_Logo({ className = "" }: { className?: string }) {
-  const perimeter = 92;
-
   return (
     <div className={`flex items-center gap-3 group select-none ${className}`}>
       
       {/* --- ICONO SVG ANIMADO DX --- */}
       <div className="relative h-10 w-10 flex items-center justify-center">
         
-        {/* Definición de la animación (Scoped) */}
-        <style>{`
-          @keyframes travelPath {
-            0% { stroke-dashoffset: ${perimeter}; }
-            100% { stroke-dashoffset: -${perimeter}; }
-          }
-        `}</style>
-
         <svg 
           viewBox="0 0 32 32" 
           className="h-full w-full overflow-visible"
@@ -42,8 +33,8 @@ export function ADSA_Logo({ className = "" }: { className?: string }) {
             strokeWidth="2"
             strokeLinecap="round"
             style={{
-              strokeDasharray: `25 ${perimeter}`, 
-              animation: "travelPath 3s linear infinite",
+              strokeDasharray: "25 92",
+              animation: "travel-path 3s linear infinite",
               filter: "drop-shadow(0 0 4px rgba(255,255,255,0.8))" 
             }}
           />

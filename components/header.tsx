@@ -4,27 +4,34 @@ import { useState, useEffect } from "react"
 import { ADSA_Logo } from "./ADSA-logo"
 import { Button } from "./ui/button"
 
+const NAV_ITEMS = ["Servicios", "Portafolio", "Nosotros", "Blog"]
+
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
-    const handleScroll = () => {
+    // Un solo listener durante toda la vida del componente; la última posición vive fuera del estado de React.
+    let lastScrollY = window.scrollY
+    let ticking = false
+
+    const update = () => {
       const currentScrollY = window.scrollY
       setIsScrolled(currentScrollY > 50)
+      setIsVisible(!(currentScrollY > lastScrollY && currentScrollY > 100))
+      lastScrollY = currentScrollY
+      ticking = false
+    }
 
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false)
-      } else {
-        setIsVisible(true)
-      }
-      setLastScrollY(currentScrollY)
+    const handleScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(update)
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [lastScrollY])
+  }, [])
 
   return (
     <header
@@ -52,9 +59,7 @@ export function Header() {
 
         {/* MENÚ DE NAVEGACIÓN */}
         <nav className="hidden md:flex items-center gap-6">
-          
-          {/* ENLACES GENERADOS CON MAP */}
-          {["Servicios", "Portafolio", "Nosotros", "Blog"].map((item) => (
+          {NAV_ITEMS.map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -67,7 +72,6 @@ export function Header() {
               </span>
             </a>
           ))}
-
         </nav>
 
         {/* BOTONES DE ACCIÓN */}

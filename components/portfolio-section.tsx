@@ -1,9 +1,8 @@
 "use client"
 
-import { useState } from "react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-// Importamos Particles en lugar de Plasma
 import Particles from "@/components/ui/particles"
 
 const projects = [
@@ -20,7 +19,7 @@ const projects = [
     title: "Next Clinic",
     category: "Sistema Web • dashboard",
     description: "Gestiona pacientes, citas y caja desde cualquier dispositivo.",
-    image: "/nextclinic.png",
+    image: "/nextClinic.png",
     tags: ["Vite", "PHP", "MariaDB", "Nginx"],
   },
   {
@@ -58,8 +57,6 @@ const projects = [
 ]
 
 export function PortfolioSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-
   return (
     <section id="portafolio" className="py-24 px-4 bg-black relative min-h-screen overflow-hidden">
       
@@ -131,8 +128,6 @@ export function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
               tabIndex={0}
               className="group relative h-[400px] w-full overflow-hidden rounded-2xl bg-neutral-900 border border-white/10 cursor-pointer focus:outline-none tap-highlight-transparent"
             >
@@ -141,9 +136,11 @@ export function PortfolioSection() {
               >
                 <div className="absolute inset-0 bg-neutral-900 z-0" />
                 
-                <img 
-                  src={project.image} 
+                <Image
+                  src={project.image}
                   alt={project.title}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   className="w-full h-full object-cover transition-all duration-500 opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-focus:opacity-100 group-focus:grayscale-0 relative z-10"
                 />
                 
@@ -156,7 +153,7 @@ export function PortfolioSection() {
                 
                 {/* Movimiento del texto hacia arriba */}
                 <div className="transform transition-transform duration-500 group-hover:-translate-y-2 group-focus:-translate-y-2">
-                  <span className="text-primary font-mono text-xs tracking-widest uppercase mb-2 block">
+                  <span className="text-primary text-xs tracking-widest uppercase mb-2 block">
                     {project.category}
                   </span>
                   

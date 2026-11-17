@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
-import Particles from "@/components/ui/particles" // Importamos las partículas
+import Particles from "@/components/ui/particles"
 
 const faqs = [
   {

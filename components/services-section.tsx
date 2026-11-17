@@ -1,6 +1,7 @@
 "use client"
 
-import React, { useRef, useEffect, useState, useCallback } from 'react'
+import type React from 'react'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import { motion } from "framer-motion"
 import { gsap } from 'gsap'
 import { Code2, Smartphone, Palette, CloudFog, Cpu, ArrowUpRight } from "lucide-react"
@@ -66,8 +67,7 @@ const createParticleElement = (x: number, y: number, color: string): HTMLDivElem
   return el
 }
 
-const updateCardGlowProperties = (card: HTMLElement, mouseX: number, mouseY: number, glow: number, radius: number) => {
-  const rect = card.getBoundingClientRect()
+const updateCardGlowProperties = (card: HTMLElement, rect: DOMRect, mouseX: number, mouseY: number, glow: number, radius: number) => {
   const relativeX = ((mouseX - rect.left) / rect.width) * 100
   const relativeY = ((mouseY - rect.top) / rect.height) * 100
   card.style.setProperty('--glow-x', `${relativeX}%`)
@@ -78,39 +78,48 @@ const updateCardGlowProperties = (card: HTMLElement, mouseX: number, mouseY: num
 
 // --- COMPONENTES INTERNOS ---
 const GlobalSpotlight: React.FC<{ gridRef: React.RefObject<HTMLDivElement | null>; disableAnimations: boolean }> = ({ gridRef, disableAnimations }) => {
-  const spotlightRef = useRef<HTMLDivElement | null>(null)
-  
   useEffect(() => {
-    if (disableAnimations || !gridRef?.current) return
+    const grid = gridRef.current
+    if (disableAnimations || !grid) return
     const spotlightRadius = 400
     const proximity = spotlightRadius * 0.5
     const fadeDistance = spotlightRadius * 0.75
 
     const spotlight = document.createElement('div')
     spotlight.style.cssText = `
-      position: fixed; width: 800px; height: 800px; border-radius: 50%; pointer-events: none;
+      position: fixed; left: 0; top: 0; width: 800px; height: 800px; border-radius: 50%; pointer-events: none;
       background: radial-gradient(circle, rgba(${ADSA_GLOW_COLOR}, 0.15) 0%, rgba(${ADSA_GLOW_COLOR}, 0.05) 25%, transparent 60%);
       z-index: 200; opacity: 0; transform: translate(-50%, -50%); mix-blend-mode: screen;
     `
     document.body.appendChild(spotlight)
-    spotlightRef.current = spotlight
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!spotlightRef.current || !gridRef.current) return
-      const rect = gridRef.current.getBoundingClientRect()
+    // quickTo reutiliza un único tween en lugar de crear uno nuevo por cada mousemove.
+    const moveX = gsap.quickTo(spotlight, 'left', { duration: 0.1 })
+    const moveY = gsap.quickTo(spotlight, 'top', { duration: 0.1 })
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>('.card'))
+    let lastEvent: MouseEvent | null = null
+    let frame = 0
+    let isLit = false
+
+    const hide = () => {
+      if (!isLit) return
+      isLit = false
+      gsap.to(spotlight, { opacity: 0, duration: 0.3, overwrite: 'auto' })
+      cards.forEach(c => c.style.setProperty('--glow-intensity', '0'))
+    }
+
+    const process = () => {
+      frame = 0
+      const e = lastEvent
+      if (!e) return
+      const rect = grid.getBoundingClientRect()
       const mouseInside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom
-      const cards = gridRef.current.querySelectorAll('.card')
-
-      if (!mouseInside) {
-        gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3 })
-        cards.forEach(c => (c as HTMLElement).style.setProperty('--glow-intensity', '0'))
-        return
-      }
+      if (!mouseInside) return hide()
+      isLit = true
 
       let minDistance = Infinity
       cards.forEach(card => {
-        const cardElement = card as HTMLElement
-        const cardRect = cardElement.getBoundingClientRect()
+        const cardRect = card.getBoundingClientRect()
         const centerX = cardRect.left + cardRect.width / 2
         const centerY = cardRect.top + cardRect.height / 2
         const distance = Math.hypot(e.clientX - centerX, e.clientY - centerY) - Math.max(cardRect.width, cardRect.height) / 2
@@ -120,25 +129,34 @@ const GlobalSpotlight: React.FC<{ gridRef: React.RefObject<HTMLDivElement | null
         let glowIntensity = 0
         if (effectiveDistance <= proximity) glowIntensity = 1
         else if (effectiveDistance <= fadeDistance) glowIntensity = (fadeDistance - effectiveDistance) / (fadeDistance - proximity)
-        updateCardGlowProperties(cardElement, e.clientX, e.clientY, glowIntensity, spotlightRadius)
+        updateCardGlowProperties(card, cardRect, e.clientX, e.clientY, glowIntensity, spotlightRadius)
       })
 
-      gsap.to(spotlightRef.current, { left: e.clientX, top: e.clientY, duration: 0.1 })
+      moveX(e.clientX)
+      moveY(e.clientY)
       const targetOpacity = minDistance <= proximity ? 0.8 : minDistance <= fadeDistance ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8 : 0
-      gsap.to(spotlightRef.current, { opacity: targetOpacity, duration: targetOpacity > 0 ? 0.2 : 0.5 })
+      gsap.to(spotlight, { opacity: targetOpacity, duration: targetOpacity > 0 ? 0.2 : 0.5, overwrite: 'auto' })
+    }
+
+    // Un cálculo por frame como máximo, aunque el ratón dispare más eventos.
+    const handleMouseMove = (e: MouseEvent) => {
+      lastEvent = e
+      if (!frame) frame = requestAnimationFrame(process)
     }
 
     const handleMouseLeave = () => {
-      gridRef.current?.querySelectorAll('.card').forEach(c => (c as HTMLElement).style.setProperty('--glow-intensity', '0'))
-      if (spotlightRef.current) gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3 })
+      isLit = true
+      hide()
     }
 
-    document.addEventListener('mousemove', handleMouseMove)
-    gridRef.current.addEventListener('mouseleave', handleMouseLeave)
+    document.addEventListener('mousemove', handleMouseMove, { passive: true })
+    grid.addEventListener('mouseleave', handleMouseLeave)
     return () => {
+      cancelAnimationFrame(frame)
       document.removeEventListener('mousemove', handleMouseMove)
-      gridRef.current?.removeEventListener('mouseleave', handleMouseLeave)
-      spotlightRef.current?.remove()
+      grid.removeEventListener('mouseleave', handleMouseLeave)
+      gsap.killTweensOf(spotlight)
+      spotlight.remove()
     }
   }, [gridRef, disableAnimations])
   return null
@@ -155,6 +173,8 @@ const MagicCard: React.FC<{ children: React.ReactNode; className: string; disabl
     timeoutsRef.current.forEach(clearTimeout)
     timeoutsRef.current = []
     particlesRef.current.forEach(p => {
+      // Mata los tweens infinitos (movimiento/parpadeo) para que no sigan corriendo sobre nodos ya eliminados.
+      gsap.killTweensOf(p)
       gsap.to(p, { scale: 0, opacity: 0, duration: 0.3, onComplete: () => p.remove() })
     })
     particlesRef.current = []
@@ -249,10 +269,12 @@ export function ServiceSection() {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT)
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+    // matchMedia solo notifica al cruzar el breakpoint, no en cada píxel de resize.
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`)
+    const update = () => setIsMobile(mql.matches)
+    update()
+    mql.addEventListener('change', update)
+    return () => mql.removeEventListener('change', update)
   }, [])
 
   return (
@@ -289,10 +311,6 @@ export function ServiceSection() {
         }
         .particle::before {
           content: ''; position: absolute; inset: -2px; background: rgba(${ADSA_GLOW_COLOR}, 0.2); border-radius: 50%; z-index: -1;
-        }
-        @keyframes border-travel {
-          0% { stroke-dashoffset: 0; }
-          100% { stroke-dashoffset: -750; }
         }
       `}</style>
 
@@ -337,7 +355,7 @@ export function ServiceSection() {
                   <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-cyan-400 group-hover:border-cyan-500/30 transition-all duration-300 shadow-md">
                     {service.icon}
                   </div>
-                  <span className="text-[11px] sm:text-xs font-mono text-cyan-500/70 uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+                  <span className="text-[11px] sm:text-xs text-cyan-500/70 uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
                     {service.label}
                   </span>
                 </div>

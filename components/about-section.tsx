@@ -1,6 +1,5 @@
 "use client"
 
-import { useRef } from "react"
 import { motion } from "framer-motion"
 import { Blocks, Gauge, Server, ShieldCheck } from "lucide-react"
 import Particles from "@/components/ui/particles" 
@@ -35,10 +34,8 @@ const stats = [
 ]
 
 export function AboutSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  
   return (
-    <section id="nosotros" ref={containerRef} className="relative py-20 md:py-32 px-4 bg-black overflow-hidden min-h-[80vh] flex items-center">
+    <section id="nosotros" className="relative py-20 md:py-32 px-4 bg-black overflow-hidden min-h-[80vh] flex items-center">
       
       {/* --- FONDO DE PARTÍCULAS --- */}
       <div className="absolute inset-0 z-0">
@@ -69,7 +66,7 @@ export function AboutSection() {
                 
                 {/* BADGE CON LED INTERMITENTE */}
                 <div className="mb-6">
-                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary text-primary bg-black/50 font-mono text-xs md:text-sm tracking-[0.2em] uppercase backdrop-blur-md">
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary text-primary bg-black/50 text-xs md:text-sm tracking-[0.2em] uppercase backdrop-blur-md">
                         <span className="relative flex items-center justify-center h-2.5 w-2.5">
                             <motion.span 
                                 animate={{ opacity: [0, 0.8, 0] }}
@@ -102,7 +99,7 @@ export function AboutSection() {
                     {stats.map((s,i) => (
                         <div key={i}>
                             <p className="text-3xl md:text-4xl font-bold text-white mb-1">{s.value}</p>
-                            <p className="text-[10px] md:text-xs text-primary font-mono uppercase tracking-widest">{s.label}</p>
+                            <p className="text-[10px] md:text-xs text-primary uppercase tracking-widest">{s.label}</p>
                         </div>
                     ))}
                 </div>

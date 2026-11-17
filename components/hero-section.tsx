@@ -4,12 +4,34 @@ import { ParticleTextEffect } from "./particle-text-effect"
 import { InfiniteSlider } from "./ui/infinite-slider"
 import { ProgressiveBlur } from "./ui/progressive-blur"
 
+const HERO_WORDS = ["ADSA", "ADSA", "Agencia de", "Desarrollo", "de Software", "del Altiplano"]
+
+const TECH_LOGOS: { name: string; src: string; className: string }[] = [
+  { name: "GitHub", src: "https://www.svgrepo.com/show/475654/github-color.svg", className: "h-9" },
+  { name: "python", src: "https://cdn.worldvectorlogo.com/logos/python-5.svg", className: "h-10" },
+  { name: "JavaScript", src: "https://cdn.worldvectorlogo.com/logos/javascript-1.svg", className: "h-9" },
+  { name: "TypeScript", src: "https://cdn.worldvectorlogo.com/logos/typescript-2.svg", className: "h-9" },
+  { name: "java", src: "https://cdn.worldvectorlogo.com/logos/java-14.svg", className: "h-10" },
+  { name: "PHP", src: "https://www.svgrepo.com/show/373966/php.svg", className: "h-12" },
+  { name: "HTML5", src: "https://cdn.worldvectorlogo.com/logos/html-1.svg", className: "h-10" },
+  { name: "CSS3", src: "https://cdn.worldvectorlogo.com/logos/css-3.svg", className: "h-10" },
+  { name: "Tailwind CSS", src: "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg", className: "h-8" },
+  { name: "React", src: "https://www.svgrepo.com/show/354259/react.svg", className: "h-10" },
+  { name: "Next.js", src: "https://www.svgrepo.com/show/521299/next-16.svg", className: "h-8 invert" },
+  { name: "Django", src: "https://cdn.worldvectorlogo.com/logos/django.svg", className: "h-9" },
+  { name: "Laravel", src: "https://cdn.worldvectorlogo.com/logos/laravel-3.svg", className: "h-10" },
+  { name: "Spring Boot", src: "https://cdn.worldvectorlogo.com/logos/spring-3.svg", className: "h-9" },
+  { name: "Node.js", src: "https://cdn.worldvectorlogo.com/logos/nodejs.svg", className: "h-8" },
+  { name: "MySQL", src: "https://www.vectorlogo.zone/logos/mysql/mysql-official.svg", className: "h-10" },
+  { name: "PostgreSQL", src: "https://www.svgrepo.com/show/303301/postgresql-logo.svg", className: "h-10" },
+  { name: "Git", src: "https://www.svgrepo.com/show/452210/git.svg", className: "h-11" },
+]
+
 export function HeroSection() {
   return (
     <section className="py-10 md:py-20 px-4 relative overflow-hidden min-h-screen flex flex-col justify-between">
-      
       <div className="flex-1 flex items-start justify-center pt-0 md:pt-20">
-        <ParticleTextEffect words={["ADSA", "ADSA", "Agencia de", "Desarrollo", "de Software", "del Altiplano"]} />
+        <ParticleTextEffect words={HERO_WORDS} />
       </div>
       <div className="container mx-auto text-center relative z-10 pb-24 md:pb-12">
         <div className="max-w-4xl mx-auto">
@@ -35,189 +57,16 @@ export function HeroSection() {
                 </div>
                 <div className="relative py-6 md:w-[calc(100%-11rem)]">
                   <InfiniteSlider durationOnHover={20} duration={40} gap={112}>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-9 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/475654/github-color.svg"
-                        alt="GitHub Logo"
-                        height="36"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/python-5.svg"
-                        alt="python Logo"
-                        height="40"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-9 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg"
-                        alt="JavaScript Logo"
-                        height="40"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-9 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/typescript-2.svg"
-                        alt="TypeScript Logo"
-                        height="36"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/java-14.svg"
-                        alt="java Logo"
-                        height="40"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-12 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/373966/php.svg"
-                        alt="PHP Logo"
-                        height="48"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/html-1.svg"
-                        alt="HTML5 Logo"
-                        height="40"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/css-3.svg"
-                        alt="CSS3 Logo"
-                        height="40"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-8 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
-                        alt="Tailwind CSS Logo"
-                        height="32"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/354259/react.svg"
-                        alt="React Logo"
-                        height="40"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-8 w-fit invert opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/521299/next-16.svg"
-                        alt="Next.js Logo"
-                        height="32"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-9 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/django.svg"
-                        alt="Django Logo"
-                        height="36"
-                        width="auto"
-                      />
-                    </div>
-                    
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/laravel-3.svg"
-                        alt="Laravel Logo"
-                        height="40"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-9 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/spring-3.svg"
-                        alt="Spring Boot Logo"
-                        height="36"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-8 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://cdn.worldvectorlogo.com/logos/nodejs.svg"
-                        alt="Node.js Logo"
-                        height="32"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://www.vectorlogo.zone/logos/mysql/mysql-official.svg"
-                        alt="MySQL Logo"
-                        height="40"
-                        width="auto"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-10 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/303301/postgresql-logo.svg"
-                        alt="PostgreSQL Logo"
-                        height="40"
-                        width="auto"
-                      />
-                    </div>
-                    
-                    
-                    <div className="flex">
-                      <img
-                        className="mx-auto h-11 w-fit opacity-80 hover:opacity-100 transition-opacity"
-                        src="https://www.svgrepo.com/show/452210/git.svg"
-                        alt="Git Logo"
-                        height="44"
-                        width="auto"
-                      />
-                    </div>
-
-
+                    {TECH_LOGOS.map((logo) => (
+                      <div key={logo.name} className="flex">
+                        <img
+                          className={`mx-auto w-fit opacity-80 hover:opacity-100 transition-opacity ${logo.className}`}
+                          src={logo.src}
+                          alt={`${logo.name} Logo`}
+                          decoding="async"
+                        />
+                      </div>
+                    ))}
                   </InfiniteSlider>
 
                   <ProgressiveBlur

@@ -380,7 +380,8 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
   }, [])
 
   return (
-    <div className="w-full h-full absolute inset-0">
+    // La máscara desvanece las partículas que salen por abajo, para que no se corten en seco en el borde de la sección.
+    <div className="w-full h-full absolute inset-0 [mask-image:linear-gradient(to_bottom,black_65%,transparent)]">
       <canvas ref={canvasRef} className="w-full h-full bg-black" />
     </div>
   )
